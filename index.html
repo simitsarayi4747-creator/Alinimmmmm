@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benim Güzelim ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:linear-gradient(180deg,#ffc0d9,#ffd8ea);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.container{
+position:relative;
+z-index:5;
+width:90%;
+max-width:700px;
+background:rgba(255,255,255,.75);
+padding:30px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(0,0,0,.15);
+}
+
+h1{
+color:#ff2e75;
+margin-bottom:20px;
+}
+
+p{
+font-size:20px;
+line-height:1.8;
+color:#444;
+}
+
+button{
+margin-top:25px;
+padding:15px 40px;
+border:none;
+border-radius:50px;
+font-size:20px;
+background:#ff4f95;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+background:#ff2d7a;
+}
+
+#gallery{
+display:none;
+}
+
+img{
+width:320px;
+height:430px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+cursor:pointer;
+transition:.4s;
+}
+
+img:hover{
+transform:scale(1.03);
+}
+
+#text{
+margin-top:20px;
+font-size:24px;
+color:#d10061;
+font-weight:bold;
+}
+
+.balloon{
+position:absolute;
+bottom:-120px;
+border-radius:50%;
+opacity:.7;
+animation:fly linear infinite;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-120vh);
+}
+}
+</style>
+
+</head>
+<body>
+
+<div class="container" id="intro">
+
+<h1>Canım Sevgilim ❤️</h1>
+
+<p>
+
+Sen hayatıma girdiğin günden beri her şey çok daha güzel oldu.
+
+Senin gülüşün, sesin, bana bakışın...
+
+Hepsi kalbime huzur veriyor.
+
+Sen benim en güzel tesadüfüm, en değerli mutluluğumsun.
+
+Seninle geçirdiğim her an benim için tarifsiz bir hediye.
+
+Ne olursa olsun seni hep seveceğim.
+
+Bugün, yarın ve ömrümün sonuna kadar...
+
+İyi ki varsın.
+
+Seni tarif edemeyeceğim kadar çok seviyorum.
+
+❤️
+
+</p>
+
+<button onclick="start()">Sürprizi Aç 💖</button>
+
+</div>
+
+<div class="container" id="gallery">
+
+<img id="photo" src="foto1.jpg">
+
+<div id="text"></div>
+
+</div>
+
+<script>
+
+const photos=[
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg",
+"foto4.jpg",
+"foto5.jpg",
+"foto6.jpg"
+];
+
+const words=[
+"Sen benim kalbimin en güzel köşesisin ❤️",
+"Gülüşün dünyadaki en sevdiğim manzara 🌸",
+"Her gün sana yeniden aşık oluyorum 💕",
+"İyi ki hayatımdasın sevgilim 💖",
+"Bir ömür elini bırakmak istemiyorum 🥹",
+"Seni sonsuza kadar çok ama çok seveceğim ❤️"
+];
+
+let index=0;
+
+function start(){
+
+document.getElementById("intro").style.display="none";
+document.getElementById("gallery").style.display="block";
+
+show();
+
+}
+
+function show(){
+
+document.getElementById("photo").src=photos[index];
+document.getElementById("text").innerHTML=words[index];
+
+}
+
+document.getElementById("photo").onclick=function(){
+
+index++;
+
+if(index>=photos.length){
+
+document.getElementById("gallery").innerHTML=
+"<h1>Sonsuza Kadar Sen ❤️</h1><br><p>Bu fotoğraflar sadece anılarımızın küçük bir kısmı... Benim en güzel anım ise hep senin yanında olmak. Seni dün sevdiğimden daha çok yarın sevecemmmm. İyi ki benim sevgilimsin. Seni sonsuz seviyorum. ❤️</p>";
+
+return;
+
+}
+
+show();
+
+}
+
+function balloon(){
+
+const b=document.createElement("div");
+
+b.className="balloon";
+
+let size=Math.random()*50+30;
+
+b.style.width=size+"px";
+b.style.height=size*1.2+"px";
+
+b.style.left=Math.random()*100+"vw";
+
+const colors=["#5da9ff","#8a4dff"];
+
+b.style.background=colors[Math.floor(Math.random()*2)];
+
+b.style.animationDuration=(Math.random()*6+6)+"s";
+
+document.body.appendChild(b);
+
+setTimeout(()=>{
+b.remove();
+},12000);
+
+}
+
+setInterval(balloon,400);
+
+</script>
+
+</body>
+</html>
